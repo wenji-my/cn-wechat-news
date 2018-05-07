@@ -1,0 +1,85 @@
+.navigationBar{
+  height: 100rpx;
+  padding: 55rpx 0 10rpx 0; 
+  border-bottom: 1px solid black;
+}
+
+.navigationBarForIphoneX{
+  position: relative;
+  height: 100rpx;
+  padding: 100rpx 0 5rpx 0;
+  border-bottom: 1px solid black;
+}
+
+.title{
+  height: 60rpx;
+  font-size: 30rpx;
+  font-family: "黑体";
+  line-height: 42rpx;
+  display: flex;
+  align-items: center;
+}
+
+.back {
+  position: relative;
+  float: left;
+  margin: 20rpx 10rpx 0 30rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border: 5rpx solid black;
+  border-top: none;
+  border-right: none;
+  transform: rotate(45deg);
+}
+
+.news-details {
+  height: 100%;
+  padding: 30rpx;
+}
+
+.news-title-content {
+  font-family: 'Microsoft JhengHei';
+  position: relative;
+  margin-bottom: 60rpx;
+}
+
+.news-title-text {
+  font-size: 45rpx;
+  line-height: 73rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.news-source {
+  display: inline;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: rgba(0,0,0,0.5);
+}
+
+.news-no-source {
+  width: 100rpx;
+  height: 30rpx;
+}
+
+.read-count {
+  display: inline;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: rgba(0,0,0,0.5);
+}
+
+.news-p {
+  margin-top: 40rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: rgba(0,0,0,0.9)
+}
+
+.news-image {
+  width: 100%;
+  margin-top: 40rpx;
+}

@@ -1,0 +1,173 @@
+<view>
+  <view class="{{isIphoneX ? 'navigationBarForIphoneX':'navigationBar'}}">
+    <view class="title">快读·资讯</view>
+  </view> 
+  <scroll-view class="tab-h" scroll-x>
+    <view wx:for="{{newsType}}" wx:key="{{index}}" class="tab-item {{currentTab==index ? 'active':''}}" data-index="{{index}}" bindtap="onTaphNav">{{item.name}}</view>
+    <!-- <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">国际</view> -->
+  </scroll-view>
+
+   <swiper current="{{currentTab}}" duration="300" bindchange="scrollTab" style="height: {{clientHeight?clientHeight+'px':'auto'}}"> 
+     <!-- <swiper-item wx:for="{{newsType}}">
+      <scroll-view scroll-y style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <block wx:for="{{currentNews}}">
+          <view>{{item.title}}</view>
+        </block>
+      </scroll-view>
+    </swiper-item>  -->
+
+    <!--国内  -->
+    <swiper-item>
+      <scroll-view scroll-y style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <view wx:for="{{gnNews}}" wx:key="{{index}}" data-index="{{index}}" data-type="gn" bindtap="onTapNews">
+          <view class="{{index === 0?'top-news linear':'hide'}}">
+            <image class="banner" src="{{item.firstImage}}"></image>
+            <view class="top-news-title">{{item.title}}</view>
+            <view class="top-news-date">{{item.date}}</view> 
+          </view>
+          <view class="{{index === 0?'hide':'other-news'}}">
+            <view class="other-news-text">
+              <view class="other-news-title">{{item.title}}</view>
+              <view class="other-news-source">{{item.source}}</view>
+            </view>
+            <view class="other-news-image-box">
+              <image class="other-news-image" src="{{item.firstImage}}"></image>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!--国际  -->
+    <swiper-item>
+      <scroll-view scroll-y style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <view wx:for="{{gjNews}}" wx:key="{{index}}" data-index="{{index}}" data-type="gj" bindtap="onTapNews">
+          <view class="{{index === 0?'top-news linear':'hide'}}">
+            <image class="banner" src="{{item.firstImage}}"></image>
+            <view class="top-news-title">{{item.title}}</view>
+            <view class="top-news-date">{{item.date}}</view> 
+          </view>
+          <view class="{{index === 0?'hide':'other-news'}}">
+            <view class="other-news-text">
+              <view class="other-news-title">{{item.title}}</view>
+              <view class="other-news-source">{{item.source}}</view>
+            </view>
+            <view class="other-news-image-box">
+              <image class="other-news-image" src="{{item.firstImage}}"></image>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!--财经  -->
+    <swiper-item>
+      <scroll-view scroll-y style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <view wx:for="{{cjNews}}" wx:key="{{index}}" data-index="{{index}}" data-type="cj" bindtap="onTapNews">
+          <view class="{{index === 0?'top-news linear':'hide'}}">
+            <image class="banner" src="{{item.firstImage}}"></image>
+            <view class="top-news-title">{{item.title}}</view>
+            <view class="top-news-date">{{item.date}}</view> 
+          </view>
+          <view class="{{index === 0?'hide':'other-news'}}">
+            <view class="other-news-text">
+              <view class="other-news-title">{{item.title}}</view>
+              <view class="other-news-source">{{item.source}}</view>
+            </view>
+            <view class="other-news-image-box">
+              <image class="other-news-image" src="{{item.firstImage}}"></image>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!--娱乐  -->
+    <swiper-item>
+      <scroll-view scroll-y style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <view wx:for="{{ylNews}}" wx:key="{{index}}" data-index="{{index}}" data-type="yl" bindtap="onTapNews">
+          <view class="{{index === 0?'top-news linear':'hide'}}">
+            <image class="banner" src="{{item.firstImage}}"></image>
+            <view class="top-news-title">{{item.title}}</view>
+            <view class="top-news-date">{{item.date}}</view> 
+          </view>
+          <view class="{{index === 0?'hide':'other-news'}}">
+            <view class="other-news-text">
+              <view class="other-news-title">{{item.title}}</view>
+              <view class="other-news-source">{{item.source}}</view>
+            </view>
+            <view class="other-news-image-box">
+              <image class="other-news-image" src="{{item.firstImage}}"></image>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!--军事  -->
+    <swiper-item>
+      <scroll-view scroll-y style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <view wx:for="{{jsNews}}" wx:key="{{index}}" data-index="{{index}}" data-type="js" bindtap="onTapNews">
+          <view class="{{index === 0?'top-news linear':'hide'}}">
+            <image class="banner" src="{{item.firstImage}}"></image>
+            <view class="top-news-title">{{item.title}}</view>
+            <view class="top-news-date">{{item.date}}</view> 
+          </view>
+          <view class="{{index === 0?'hide':'other-news'}}">
+            <view class="other-news-text">
+              <view class="other-news-title">{{item.title}}</view>
+              <view class="other-news-source">{{item.source}}</view>
+            </view>
+            <view class="other-news-image-box">
+              <image class="other-news-image" src="{{item.firstImage}}"></image>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!--体育  -->
+    <swiper-item>
+      <scroll-view scroll-y style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <view wx:for="{{tyNews}}" wx:key="{{index}}" data-index="{{index}}" data-type="ty" bindtap="onTapNews">
+          <view class="{{index === 0?'top-news linear':'hide'}}">
+            <image class="banner" src="{{item.firstImage}}"></image>
+            <view class="top-news-title">{{item.title}}</view>
+            <view class="top-news-date">{{item.date}}</view> 
+          </view>
+          <view class="{{index === 0?'hide':'other-news'}}">
+            <view class="other-news-text">
+              <view class="other-news-title">{{item.title}}</view>
+              <view class="other-news-source">{{item.source}}</view>
+            </view>
+            <view class="other-news-image-box">
+              <image class="other-news-image" src="{{item.firstImage}}"></image>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!--其他  -->
+    <swiper-item>
+      <scroll-view scroll-y style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <view wx:for="{{otherNews}}" wx:key="{{index}}" data-index="{{index}}" data-type="other" bindtap="onTapNews">
+          <view class="{{index === 0?'top-news linear':'hide'}}">
+            <image class="banner" src="{{item.firstImage}}"></image>
+            <view class="top-news-title">{{item.title}}</view>
+            <view class="top-news-date">{{item.date}}</view> 
+          </view>
+          <view class="{{index === 0?'hide':'other-news'}}">
+            <view class="other-news-text">
+              <view class="other-news-title">{{item.title}}</view>
+              <view class="other-news-source">{{item.source}}</view>
+            </view>
+            <view class="other-news-image-box">
+              <image class="other-news-image" src="{{item.firstImage}}"></image>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper> 
+</view>

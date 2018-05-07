@@ -1,0 +1,21 @@
+<!--pages/detail/detail.wxml-->
+<view>
+  <view class="{{isIphoneX ? 'navigationBarForIphoneX':'navigationBar'}}">
+    <view class="back" bindtap="onTapBack"></view>
+    <view class="title">快读·资讯</view>
+  </view>
+
+  <scroll-view scroll-y>
+    <view class="news-details">
+      <view class="news-title-content">
+        <view class="news-title-text">{{newsTitle}}</view>
+        <view class="{{newsSource ? 'news-source':'news-no-source'}}">{{newsSource}}</view>
+        <view class="read-count">阅读 {{readCount}}</view>
+      </view>
+      <view class="news-p">{{newsPTop}}</view>
+      <image class="news-image" src="{{newsImage}}"></image>
+      <view class="news-p">{{newsPBottom}}</view>
+    </view>
+    
+  </scroll-view>
+</view>
