@@ -67,31 +67,6 @@ Page({
         })
       }
     })
-    this.data.tabClickedMap = new Map()
-    wx.request({
-      url: 'https://test-miniprogram.com/api/news/list',
-      data: {
-        type: 'gn'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: res => {
-        // console.log(res)
-        if (res.data.code === 200) {
-          //获取数据成功
-          let result = res.data.result
-          this.data.tabClickedMap.set(newsType[0].type,true)
-          this.data.cacheNews.push({
-            type: newsType[0].type,
-            news: result
-          })
-          this.setData({
-            currentNews: result
-          })
-        }
-      }
-    })
   },
 
   // onReachBottom() {
@@ -153,6 +128,9 @@ Page({
         url: 'https://test-miniprogram.com/api/news/list',
         data: {
           type: data.type
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
         },
         success: res => {
           if (res.data.code === 200) {
