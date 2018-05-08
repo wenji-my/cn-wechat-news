@@ -1,17 +1,23 @@
-.navigationBar{
-  height: 100%;
-  background: #34A1E2;
-   padding: 55rpx 0 10rpx 0; 
+.statusBar {
+  height: 40rpx;
+  background: rgba(42,138,209,0.8);
 }
 
-.navigationBarForIphoneX{
-  height: 100%;
-  background: #34A1E2;
-  padding: 100rpx 0 5rpx 0;
+.statusBarForIphoneX {
+  height: 88rpx;
+  background: rgba(42,138,209,0.8);
 }
 
-.title{
-  height: 60rpx;
+.navBar {
+  position: relative;
+  background: red;
+  height: 180rpx;
+  background: linear-gradient(0deg, rgba(42,138,209,1),rgba(42,138,209,0.8));
+}
+
+.navTitle {
+  height: 60rpx; 
+  padding-top: 15rpx; 
   margin-left: 30rpx;
   font-size: 30rpx;
   line-height: 42rpx;
@@ -22,10 +28,11 @@
 }
 
 .tab-h{
-  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   white-space: nowrap;
-  padding: 10rpx 0;
-  background: linear-gradient(0deg, #3199DA,#34A1E2);
+  padding-bottom: 10rpx;
 }
 
 .tab-item{
@@ -55,6 +62,26 @@
   background: rgba(255, 255, 255, 0.6);
 }
 
+.detail {
+  height: 1114rpx;
+}
+
+.detailForIphoneX {
+  height: 1356rpx;
+}
+
+.loading {
+  width: 100%;
+  height: 100%;
+  color: rgba(0, 0, 0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.maxHeight {
+  height: 100%;
+}
 
 .hide {
   display: none;
