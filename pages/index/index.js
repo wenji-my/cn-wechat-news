@@ -1,128 +1,97 @@
 let newsType = [
   {
     type: "gn",
-    name: "国内",
-    showLoading: true
+    name: "国内"
   },
   {
     type: "gj",
-    name: "国际",
-    showLoading: true
+    name: "国际"
   },
   {
     type: "cj",
-    name: "财经",
-    showLoading: true
+    name: "财经"
   },
   {
     type: "yl",
-    name: "娱乐",
-    showLoading: true
+    name: "娱乐"
   },
   {
     type: "js",
-    name: "军事",
-    showLoading: true
+    name: "军事"
   },
   {
     type: "ty",
-    name: "体育",
-    showLoading: true
+    name: "体育"
   },
   {
     type: "other",
-    name: "其他",
-    showLoading: true
+    name: "其他"
   }
 ]
 Page({
   data:{
-    isIphoneX: false,
     newsType: newsType,
     currentTab: 0,
     currentNews: [],
-    preCurrent: 0
+    showLoading: true
   },
 
-  // onPullDownRefresh(){
-  //   console.log(1)
-  // },
+  onPullDownRefresh(){
+    let type = this.data.newsType[this.data.currentTab].type
+    this.getNews(()=>{
+      wx.stopPullDownRefresh()
+    })
+  },
 
   onLoad() {
-    //适配iPhoneX
-    wx.getSystemInfo({
-      success: res => {
-        let model = res.model;
-        if (model.search('iPhone X') != -1) {
-          this.setData({
-            isIphoneX: true
-          })
-        }
-      }
-    })
-    wx.request({
-      url: 'https://test-miniprogram.com/api/news/list',
-      data: {
-        type: 'gn'
-      },
-      success: res => {
-        let result = res.data.result
-        // console.log(result)
-        this.data.newsType[0].showLoading = false
-        let newsType = this.data.newsType
-        // console.log(this.data.newsLoading)
-        this.setData({
-          currentNews: result,
-          newsType: newsType
-        })
-      }
-    })
+    this.getNews()
   },
 
-  // onReachBottom() {
-  //   console.log(1)
-  // },
-
-  scrollTab(e) {
-    let current = e.detail.current
-    this.setData({
-      currentTab: current
-    })
-    wx.request({
-      url: 'https://test-miniprogram.com/api/news/list',
-      data: {
-        type: newsType[current].type
-      },
-      success: res => {
-        let result = res.data.result
-        // console.log(result)
-        this.data.newsType[current].showLoading = false
-        this.data.newsType[this.data.preCurrent].showLoading = true
-        let newsType = this.data.newsType
-        // console.log(this.data.newsLoading)
-        this.setData({
-          currentNews: result,
-          // newsType: newsType,
-          preCurrent: current
-        })
-        setTimeout(() => {
-          this.setData({
-            newsType: newsType
-          })
-        }, 10)
-      }
-    })
-  },
-
-  onTaphNav(e){
+  onTaphNav(e) {
     let index = e.target.dataset.index
     if (this.data.currentTab === index) {
       return false;
     } else {
       this.setData({
-        currentTab: index
+        currentTab: index,
+        showLoading: true
       })
+      this.getNews()
     }
+  },
+
+  onTapNews(e) {
+    wx.navigateTo({
+      url: '/pages/detail/detail?id=' + e.currentTarget.dataset.id
+    })
+  },
+
+  getNews(callback) {
+    wx.request({
+      url: 'https://test-miniprogram.com/api/news/list',
+      data: {
+        type: this.data.newsType[this.data.currentTab].type
+      },
+      success: res => {
+        let result = res.data.result
+        result.forEach(data => {
+          if (!data.source) {
+            data.source = '作者不详'
+          }
+          let date = data.date.substr(0, 10)
+          let time = data.date.substr(11, 5)
+          data.date = date + ' ' + time
+        })
+
+        this.setData({
+          currentNews: result,
+          showLoading: false
+        })
+      },
+      complete: () => {
+        callback && callback()
+      }
+    })
   }
 
 })

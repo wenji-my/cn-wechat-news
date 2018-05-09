@@ -1,35 +1,29 @@
 <view>
-  <view class="{{isIphoneX ? 'statusBarForIphoneX':'statusBar'}}"></view>
-  <view class="navBar">
-    <view class="navTitle">快读·资讯</view>
-    <scroll-view scroll-x class="tab-h">
+  <scroll-view scroll-x class="tab-h">
       <view class="tab-item {{currentTab==index ? 'active':''}}" data-index="{{index}}" wx:for="{{newsType}}" wx:key="{{index}}" bindtap="onTaphNav">{{item.name}}</view>
     </scroll-view>
-  </view>
 
-   <swiper class="{{isIphoneX ? 'detailForIphoneX':'detail'}}" duration="200" current="{{currentTab}}" bindchange="scrollTab">
-    <swiper-item wx:for="{{newsType}}" wx:key="{{index}}">
-      <view class="maxHeight">
-        <view class="{{item.showLoading?'loading':'hide'}}">loading...</view>
-        <view class="{{item.showLoading?'hide':'maxHeight'}}" scroll-y>
-          <view wx:for="{{currentNews}}" wx:key="{{item.id}}">
-            <view class="top-news linear" wx:if="{{index === 0 && item.firstImage}}">
-              <image class="banner" src="{{item.firstImage}}"></image>
-              <view class="top-news-title">{{item.title}}</view>
-              <view class="top-news-date">{{item.date}}</view> 
-            </view>
-            <view class="other-news" wx:else>
-              <view class="other-news-text">
-                <view class="other-news-title">{{item.title}}</view>
-                <view class="other-news-source">{{item.source}}</view>
-              </view>
-              <view class="other-news-image-box">
-                <image class="other-news-image" src="{{item.firstImage}}"></image>
-              </view>
-            </view>
+   <view>
+    <view class="loading" wx:if="{{showLoading}}">loading</view> 
+    <view wx:else>
+       <view wx:for="{{currentNews}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="onTapNews"> 
+        <view class="top-news linear" wx:if="{{index === 0 && item.firstImage}}">
+          <image class="banner" src="{{item.firstImage}}"></image>
+          <view class="top-news-title">{{item.title}}</view>
+          <view class="top-news-date">{{item.date}}</view> 
+        </view> 
+        <view class="other-news" wx:else>
+          <view class="other-news-text">
+            <view class="other-news-title">{{item.title}}</view>
+            <view class="other-news-source">{{item.source}}</view>
+            <view class="other-news-date">{{item.date}}</view>
+          </view>
+          <view class="other-news-image-box">
+            <image class="other-news-image" src="{{item.firstImage}}" wx:if="item.firstImage"></image>
           </view>
         </view>
-      </view>
-    </swiper-item>
-  </swiper>   
+     </view> 
+    </view>
+    
+  </view> 
 </view>

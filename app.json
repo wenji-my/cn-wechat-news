@@ -4,6 +4,11 @@
     "pages/detail/detail"
   ],
   "window": {
-    "navigationStyle": "custom"
+    "navigationBarBackgroundColor": "#2A8AD1",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "新闻小程序",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#2A8AD1",
+    "navigationBarTextStyle": "white"
   }
 }

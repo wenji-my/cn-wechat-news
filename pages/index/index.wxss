@@ -1,38 +1,7 @@
-.statusBar {
-  height: 40rpx;
-  background: rgba(42,138,209,0.8);
-}
-
-.statusBarForIphoneX {
-  height: 88rpx;
-  background: rgba(42,138,209,0.8);
-}
-
-.navBar {
-  position: relative;
-  background: red;
-  height: 180rpx;
-  background: linear-gradient(0deg, rgba(42,138,209,1),rgba(42,138,209,0.8));
-}
-
-.navTitle {
-  height: 60rpx; 
-  padding-top: 15rpx; 
-  margin-left: 30rpx;
-  font-size: 30rpx;
-  line-height: 42rpx;
-  color: white;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-}
 
 .tab-h{
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  white-space: nowrap;
-  padding-bottom: 10rpx;
+  height: 70rpx;
+  background: #2A8AD1;
 }
 
 .tab-item{
@@ -40,7 +9,7 @@
   font-size: 30rpx;
   line-height: 42rpx; 
   color: rgba(255, 255, 255, 0.8);
-  margin: 0 25rpx;
+  margin: 0 20rpx;
   display: inline-block;
 }
 
@@ -60,14 +29,6 @@
   width: 30rpx;
   height: 5rpx;
   background: rgba(255, 255, 255, 0.6);
-}
-
-.detail {
-  height: 1114rpx;
-}
-
-.detailForIphoneX {
-  height: 1356rpx;
 }
 
 .loading {
@@ -151,7 +112,15 @@
   left: 0;
   bottom: 0;
   color: rgba(0,0,0,0.6);
-  font-size: 28rpx;
+  font-size: 26rpx;
+}
+
+.other-news-date {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: rgba(0,0,0,0.6);
+  font-size: 26rpx;
 }
 
 .other-news-image-box {
