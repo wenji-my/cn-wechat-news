@@ -7,6 +7,7 @@ Page({
   data: {
     newsTitle: '',
     newsSource: '',
+    newsDate: '',
     readCount: 0,
     newsImage: '',
     newsStrong: '',
@@ -27,6 +28,10 @@ Page({
       success: res => {
         if (res.data.code === 200) {
           let result = res.data.result
+          //格式化发布时间
+          let date = result.date.substr(0, 10)
+          let time = result.date.substr(11, 5)
+          result.date = date + ' ' + time
           let content = result.content
           if (!result.source) {
             result.source = '作者不详'
@@ -42,6 +47,7 @@ Page({
             if (data.type.search('strong') != -1) {
               strongText += data.text
             }
+            //type为image的是图片地址
             if (data.type.search('image') != -1) {
               newsImage = data.src
             }
@@ -49,6 +55,7 @@ Page({
           this.setData({
             newsTitle: result.title,
             newsSource: result.source,
+            newsDate: result.date,
             readCount: result.readCount,
             newsImage: newsImage,
             newsP: text,

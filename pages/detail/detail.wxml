@@ -4,11 +4,13 @@
     <view class="news-details">
       <view class="news-title-content">
         <view class="news-title-text">{{newsTitle}}</view>
-        <view class="{{newsSource ? 'news-source':'news-no-source'}}">{{newsSource}}</view>
+        <view class="news-source">{{newsSource}}</view>
+        <view class="news-date">{{newsDate}}</view>
         <view class="read-count">阅读 {{readCount}}</view>
       </view>
       <view class="news-p">{{newsStrong}}</view>
-      <image class="news-image" src="{{newsImage}}"></image>
+      <image class="news-image" src="{{newsImage}}" wx:if="{{newsImage}}"></image>
+      <image class="news-image" src="/images/defaultImage.jpg" wx:else></image>
       <view class="news-p">{{newsP}}</view>
     </view>
     

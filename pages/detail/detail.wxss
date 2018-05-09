@@ -24,9 +24,12 @@
   color: rgba(0,0,0,0.5);
 }
 
-.news-no-source {
-  width: 100rpx;
-  height: 30rpx;
+.news-date {
+  display: inline;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  margin-left: 20rpx;
+  color: rgba(0,0,0,0.5);
 }
 
 .read-count {

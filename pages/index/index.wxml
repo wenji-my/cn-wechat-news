@@ -7,8 +7,10 @@
     <view class="loading" wx:if="{{showLoading}}">loading</view> 
     <view wx:else>
        <view wx:for="{{currentNews}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="onTapNews"> 
-        <view class="top-news linear" wx:if="{{index === 0 && item.firstImage}}">
-          <image class="banner" src="{{item.firstImage}}"></image>
+        <view class="top-news linear" wx:if="{{index === 0}}">
+          <image class="banner" src="{{item.firstImage}}" wx:if="item.firstImage"></image> 
+          <!--如果没有返回图片，使用默认图片  -->
+          <image class="banner" src="/images/defaultImage.jpg" wx:else></image> 
           <view class="top-news-title">{{item.title}}</view>
           <view class="top-news-date">{{item.date}}</view> 
         </view> 
@@ -19,7 +21,8 @@
             <view class="other-news-date">{{item.date}}</view>
           </view>
           <view class="other-news-image-box">
-            <image class="other-news-image" src="{{item.firstImage}}" wx:if="item.firstImage"></image>
+            <image class="other-news-image" src="{{item.firstImage}}" wx:if="item.firstImage"></image> 
+            <image class="other-news-image" src="/images/defaultImage.jpg" wx:else></image>
           </view>
         </view>
      </view> 

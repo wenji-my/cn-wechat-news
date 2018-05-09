@@ -47,20 +47,26 @@ Page({
     this.getNews()
   },
 
+  //标签点击事件
   onTaphNav(e) {
     let index = e.target.dataset.index
     if (this.data.currentTab === index) {
+      //点击当前标签，什么事都不做
       return false;
     } else {
+      //否则切换标签
       this.setData({
         currentTab: index,
         showLoading: true
       })
+      //请求数据
       this.getNews()
     }
   },
 
+  //具体新闻的点击事件
   onTapNews(e) {
+    //跳转到新闻详情页面
     wx.navigateTo({
       url: '/pages/detail/detail?id=' + e.currentTarget.dataset.id
     })
@@ -78,6 +84,7 @@ Page({
           if (!data.source) {
             data.source = '作者不详'
           }
+          //格式化发布时间
           let date = data.date.substr(0, 10)
           let time = data.date.substr(11, 5)
           data.date = date + ' ' + time
